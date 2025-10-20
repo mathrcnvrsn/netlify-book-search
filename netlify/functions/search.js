@@ -12,7 +12,7 @@ export async function handler(event, context) {
 
     try {
                
-    //     const response = await axios.get(`https://mediathequemallemort.opac-x.com/recherche?general=${query}`); //, { headers: { 'User-Agent': 'netlify-serverless' } });
+        const response = await axios.get(`https://mediathequemallemort.opac-x.com/recherche?general=${query}`); //, { headers: { 'User-Agent': 'netlify-serverless' } });
     
     // if(response.status !== 200) {
 	// 		return {statusCode: response.status, body: `Localities fetch error: ${response.statusText}`};
@@ -24,7 +24,7 @@ export async function handler(event, context) {
 
 		return {
 			statusCode: 200,
-			body: JSON.stringify({ query, found }),
+			body: JSON.stringify({ query, response.status, found }),
 
 		};
   } catch (error) {
