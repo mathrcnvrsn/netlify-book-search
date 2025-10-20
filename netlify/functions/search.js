@@ -22,7 +22,7 @@ export async function handler(event, context) {
 		}
 
         const dom = new JSDOM(response.data);
-        found = dom.window.document.querySelectorAll("div.titre_doc > a")
+        const found = dom.window.document.querySelectorAll("div.titre_doc > a")
 
 		return {
 			statusCode: 200,
