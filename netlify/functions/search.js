@@ -12,7 +12,6 @@ export async function handler(event, context) {
   try {
     const response = await axios.get(`https://mediathequemallemort.opac-x.com/recherche?general=${query}`); //, { headers: { 'User-Agent': 'netlify-serverless' } });
     
-    const html = await response.text();
     if(response.status !== 200) {
 			return {statusCode: response.status, body: `Localities fetch error: ${response.statusText}`};
 		}
