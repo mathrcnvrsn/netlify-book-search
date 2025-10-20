@@ -1,7 +1,7 @@
-import fetch from 'node-fetch';
+import axios from 'axios';
 import cheerio from 'cheerio';
 
-exports.handler = async event => {
+ export async function handler(event, context) {
     const subject = event.queryStringParameters.name || 'World'
     return {
         statusCode: 200,
