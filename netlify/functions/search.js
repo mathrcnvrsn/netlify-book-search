@@ -1,5 +1,4 @@
 import axios from 'axios';
-import cheerio from 'cheerio';
 
  export async function handler(event, context) {
     const subject = event.queryStringParameters.name || 'World'
@@ -21,7 +20,7 @@ import cheerio from 'cheerio';
 //   url += query;
 
 //   try {
-//     const response = await fetch(url, { headers: { 'User-Agent': 'netlify-serverless' } });
+//     const response = await axios.get(url, { headers: { 'User-Agent': 'netlify-serverless' } });
 //     if (!response.ok) {
 //       return {
 //         statusCode: response.status,
