@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export async function handler(event, context) {
-  https://mediathequemallemort.opac-x.com/recherche?general="
   const { query } = event.queryStringParameters || {};
   if (!query) {
     return {
