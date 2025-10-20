@@ -11,20 +11,16 @@ export async function handler(event, context) {
 
   try {
     const response = await axios.get(`https://mediathequemallemort.opac-x.com/recherche?general=${query}`); //, { headers: { 'User-Agent': 'netlify-serverless' } });
-    if (!response.ok) {
-      return {
-        statusCode: response.status,
-        body: JSON.stringify({ error: `Erreur lors de la récupération de la page : ${response.statusText}` }),
-      };
-    }
+    
     const html = await response.text();
-    // const $ = cheerio.load(html);
-    // const textContent = $('body').text();
-    // const found = textContent.toLowerCase().includes(query.toLowerCase());
-    return {
-      statusCode: 200,
-      body: JSON.stringify({ url, query, "TODO" }),
-    };
+    if(response.status !== 200) {
+			return {statusCode: response.status, body: `Localities fetch error: ${response.statusText}`};
+		}
+
+		return {
+			statusCode: 200,
+			body: JSON.stringify(response.data)
+		};
   } catch (error) {
     return {
       statusCode: 500,
