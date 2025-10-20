@@ -2,13 +2,16 @@ import fetch from 'node-fetch';
 import cheerio from 'cheerio';
 
 export async function handler(event, context) {
-  const { url, query } = event.queryStringParameters || {};
+  const url = "https://mediathequemallemort.opac-x.com/recherche?general="
+  const { query } = event.queryStringParameters || {};
   if (!url || !query) {
     return {
       statusCode: 400,
       body: JSON.stringify({ error: 'Les paramètres "url" et "query" sont requis.' }),
     };
   }
+  url += query;
+  
   try {
     const response = await fetch(url, { headers: { 'User-Agent': 'netlify-serverless' } });
     if (!response.ok) {
