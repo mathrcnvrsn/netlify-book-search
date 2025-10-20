@@ -1,4 +1,7 @@
-[build]
+[functions]
+  node_bundler = "esbuild"
+  
+  [build]
     publish = "."
     command = "echo No build command"
     node_bundler = "esbuild"
